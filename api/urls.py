@@ -5,7 +5,7 @@ from django.conf.urls import include
 from .views import FormTestViewSet
 
 router = routers.DefaultRouter()
-router.register('form_test', FormTestViewSet)
+router.register(r'form-test', FormTestViewSet)
 
 urlpatterns = [
         path('', include(router.urls)),

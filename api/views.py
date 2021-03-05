@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
+from rest_framework.decorators import action
 from .models import FormTest
 from .serializers import FormTestSerializer
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
 
 
 # Create your views here.
@@ -12,14 +12,7 @@ class FormTestViewSet(viewsets.ModelViewSet):
     queryset = FormTest.objects.all()
     serializer_class = FormTestSerializer
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class(initial=self.initial)
-        return render(request, self.template_name, {'form': form})
-
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            # <process form cleaned data>
-            return HttpResponseRedirect('/success/')
-
-        return render(request, self.template_name, {'form': form})
+    @action(detail=True, methods=['GET'])
+    def createRegister(self, request, *args, **kwargs):
+        form = self.get_object()
+        return Response(form.createRegister)
