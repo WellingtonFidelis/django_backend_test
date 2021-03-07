@@ -8,107 +8,95 @@ from .serializers import FormTestSerializer
 
 
 # Create your views here.
-# []create a status for all responses
+# -[x]create a status for all responses
+# -[x]rewriting api using class-based views
 #
 
-@api_view(['GET'])
-def formList(resquest):
-    try:
+class FormTestViewSet(viewsets.ModelViewSet):
+   
+    def list(self, request, *args, **kwargs):
         queryset = FormTest.objects.all()
-        serializer = FormTestSerializer(queryset, many=True)
-        response = {
-                'status': 'Ok',
-                'message': 'List of register called.',
-                'result': serializer.data
-                }
-        return Response(response, status=status.HTTP_200_OK)
-    
-    except:
-        response = {
-                'status': 'Fail',
-                'message': 'Ops, I can not help you',
-                'result': serializer.errors
-                }
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+        serializer_class = FormTestSerializer(queryset, many=True)
 
-@api_view(['GET'])
-def formListDetail(request, pk):
-    try:
-        queryset = FormTest.objects.get(id=pk)
-        serializer = FormTestSerializer(queryset, many=False)
-        response = {
-                'status': 'Ok',
-                'message': 'Register called.',
-                'result': serializer.data
-                }
-        return Response(response, status=status.HTTP_200_OK)
-
-    except:
-        response = {
-                'status': 'Fail',
-                'message': 'Ops, I can not help you',
-                'result': serializer.errors
-                }
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['POST'])
-def formCreate(request):
-    serializer = FormTestSerializer(data=request.data)
-
-    if serializer.is_valid():
-        serializer.save()
         response = {
                 'status': 'Ok',
                 'message': 'Register created.',
-                'result': serializer.data
+                'result': serializer_class.data
                 }
-        return Response(response, status=status.HTTP_201_CREATED)
+        return Response(response, status=status.HTTP_200_OK)
 
-    response = {
+    def create(self, request, *args, **kwargs):
+        serializer_class = FormTestSerializer(data=request.data)
+
+        if serializer_class.is_valid():
+            serializer_class.save()
+            response = {
+                'status': 'Ok',
+                'message': 'Register created.',
+                'result': serializer_class.data
+                }
+            return Response(response, status=status.HTTP_201_CREATED)
+
+        response = {
             'status': 'Fail',
             'message': 'Ops, I can not help you',
-            'result': serializer.errors
+            'result': serializer_class.errors
             }
-    return Response(response, status=status.HTTP_400_BAD_REQUEST)
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['PUT'])
-def formUpdate(request, pk):
-    queryset = FormTest.objects.get(id=pk)
-    serializer = FormTestSerializer(queryset, data=request.data)
+    def retrieve(self, request, pk, **kwargs):
+        try:
+            queryset = FormTest.objects.get(id=pk)
+            serializer_class = FormTestSerializer(queryset, many=False)
+            response = {
+                    'status': 'Ok',
+                    'message': 'Register called',
+                    'result': serializer_class.data
+                    }
+            return Response(response, status=status.HTTP_200_OK)
+        except:
+            response = {
+                'status': 'Fail',
+                'message': 'Ops, I can not help you',
+                'result': f'I can not found any register with id= {pk}'
+                }
+            return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
-    if serializer.is_valid():
-        serializer.save()
-        response = {
+    def update(self, request, pk, **kwargs):
+        queryset = FormTest.objects.get(id=pk)
+        serializer_class = FormTestSerializer(queryset, data=request.data)
+
+        if serializer_class.is_valid():
+            serializer_class.save()
+            response = {
                 'status': 'Ok',
                 'message': 'Register updated.',
-                'result': serializer.data
+                'result': serializer_class.data
                 }
-        return Response(response, status=status.HTTP_202_ACCEPTED)
+            return Response(response, status=status.HTTP_202_ACCEPTED)
 
-    response = {
+        response = {
             'status': 'Fail',
             'message': 'Ops, I can not help you',
-            'result': serializer.errors
+            'result': serializer_class.errors
             }
-    return Response(response, status=status.HTTP_400_BAD_REQUEST)
+        return Response(response, status=status.HTTP_400_BAD_REQUEST) 
 
-@api_view(['DELETE'])
-def formDelete(request, pk):
-    try:
-        queryset = FormTest.objects.get(id=pk)
-        queryset.delete()
-        response = {
+    def destroy(self, request, pk, **kwargs):
+        try:
+            queryset = FormTest.objects.get(id=pk)
+            queryset.delete()
+            response = {
                 'status': 'Ok',
                 'message': 'Register deleted.',
                 'result': f'{queryset.first_name} {queryset.last_name}'
                 }
-        return Response(response, status=status.HTTP_200_OK)
+            return Response(response, status=status.HTTP_200_OK)
 
-    except:
-        response = {
-            'status': 'Fail',
-            'message': 'Ops, I can not help you',
-            'result': 'Not Found'
-            }
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
+        except:
+            response = {
+                'status': 'Fail',
+                'message': 'Ops, I can not help you',
+                'result': 'Not Found'
+                }
+            return Response(response, status=status.HTTP_400_BAD_REQUEST)
