@@ -20,7 +20,7 @@ class FormTestViewSet(viewsets.ModelViewSet):
 
         response = {
                 'status': 'Ok',
-                'message': 'Register created.',
+                'message': 'Registers called.',
                 'result': serializer_class.data
                 }
         return Response(response, status=status.HTTP_200_OK)
