@@ -13,11 +13,11 @@ from .serializers import FormTestSerializer
 #
 
 class FormTestViewSet(viewsets.ModelViewSet):
+    serializer_class = FormTestSerializer
+    queryset = FormTest.objects.all()
    
-    def list(self, request, *args, **kwargs):
-        queryset = FormTest.objects.all()
+    def get(self, request, *args, **kwargs):
         serializer_class = FormTestSerializer(queryset, many=True)
-
         response = {
                 'status': 'Ok',
                 'message': 'Registers called.',
