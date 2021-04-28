@@ -25,10 +25,25 @@ SECRET_KEY = 'fpnme@yevemgqf24io!-^2o1w+onh_1n+-kg&*g^gti3*6_#+@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+
 ALLOWED_HOSTS = [
-    '172.17.0.2',
-    '127.0.0.1',
-]
+        '127.0.0.1',
+        'localhost',
+        '172.17.0.2',
+        '3.23.94.83',
+        ]
+
+CORS_ORIGIN_WHITELIST = (
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+        'http://localhost:8000',
+        'http://127.0.0.1:8000',
+        'http://3.23.94.83',
+        'http://3.23.94.83:8000',
+        'http://172.20.201.103',
+        'http://172.20.201.103:3000',
+)
 
 
 # Application definition
@@ -43,20 +58,18 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'corsheaders',
-
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
 ROOT_URLCONF = 'form_test.urls'
@@ -133,10 +146,3 @@ STATIC_ROOT = Path.joinpath(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
 
-#Configuring CORS
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8000",
-    "http://127.0.0.1:3000",
-    'http://localhost:3000',
-    'http://172.17.0.2:3000',
-]
