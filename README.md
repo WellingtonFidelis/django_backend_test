@@ -1,6 +1,10 @@
-<p align="center">
-  <img src="" alt="" />
-</p>
+<h1 align="center">
+    <img width="400px" height="200px" alt="Happy" title="Happy" src="https://marcas-logos.net/wp-content/uploads/2020/03/GITHUB-LOGO.png?raw=true" />
+</h1>
+
+<h3 align="center">
+  Django API Test - Sketch made with Django to help me and anyone who wants to.
+</h3>
 
 <p align="center">
   <a href="https://github.com/WellingtonFidelis">
@@ -28,7 +32,7 @@
 
 ---
 # :satisfied: Sobre o projeto
-This project was created to use with apps tests, always that need a backend. This sketch was based at Udemy courses and documentation of all frameworks used.
+This project was created to use with apps tests, always that need a backend made with Python. This sketch was based at Udemy course and documentation of all frameworks used.
 
 ---
 # :panda_face: Layout
@@ -39,6 +43,7 @@ This project was created to use with apps tests, always that need a backend. Thi
 * [Python](https://www.python.org)
 * [Django](https://www.djangoproject.com)
 * [Django Rest Framework](https://www.django-rest-framework.org)
+* [Django CORS Headers](https://github.com/adamchainz/django-cors-headers)
 
 ---
 # :question: Como rodar o projeto
