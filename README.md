@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img width="400px" height="200px" alt="Happy" title="Happy" src="https://marcas-logos.net/wp-content/uploads/2020/03/GITHUB-LOGO.png?raw=true" />
+    <img width="400px" height="200px" alt="Github" title="Github" src="https://marcas-logos.net/wp-content/uploads/2020/03/GITHUB-LOGO.png?raw=true" />
 </h1>
 
 <h3 align="center">
@@ -11,15 +11,14 @@
     <img alt="By Wellington Fidelis" src="https://img.shields.io/badge/made%20by-Wellington%20Fidelis-5965e0">
   </a>
 
-  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/WellingtonFidelis/moveit-next?color=rgb(89,101,224)">
+  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/WellingtonFidelis/django_backend_test?color=rgb(89,101,224)">
 
-  <img alt="Contributors" src="https://img.shields.io/github/contributors/WellingtonFidelis/moveit-next?color=rgb(89,101,224)">
+  <img alt="Contributors" src="https://img.shields.io/github/contributors/WellingtonFidelis/django_backend_test?color=rgb(89,101,224)">
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361?color=rgb(89,101,224)">
 </p>
 
 <p align="center">
-  <img src="" />
 </p>
 
 # :pushpin: Tabela de conteúdos
@@ -48,7 +47,7 @@ This project was created to use with apps tests, always that need a backend made
 ---
 # :question: Como rodar o projeto
 ## Acessando direto pelo site:
-<!-- * Você pode clicar nesse [link](https://moveit-next-n0e3rb6sw-wellingtonsilveira.vercel.app/) e acessar a aplicação que está hospedada na plataforma da Vercel. -->
+<!-- * Você pode clicar nesse [link](https://django_backend_test-n0e3rb6sw-wellingtonsilveira.vercel.app/) e acessar a aplicação que está hospedada na plataforma da Vercel. -->
 
 ## Rodando na máquina local:
 (certifique-se de ter instalado na sua máquina o [Python3](https://www.python.org/downloads/) ou o [Python](https://docs.python.org/2.7/installing/index.html))
